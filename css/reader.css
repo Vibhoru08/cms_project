@@ -1,0 +1,280 @@
+* {box-sizing: border-box;}
+body, html{
+
+padding: 0px;
+margin: 0px;
+}
+.topnav {
+    background-color: #556B2F;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 13px 25px 13px 25px;
+    text-decoration: none;
+    font-size: 15px;
+    font-family:cursive;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+    background-color:  #ddd;
+    color: black;
+    display : block;
+
+}
+a.tn-small{
+    font-size: 15px;
+    margin-top: ;
+}
+a.tn-big{
+  font-weight: 550px;
+}
+
+/* Add an active class to highlight the current page */
+
+
+/* Hide the link that should open and close the topnav on small screens */
+
+/* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
+@media screen and (max-width: 600px) {
+  .topnav a:not(:first-child) {display: none;}
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+}
+
+/* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
+@media screen and (max-width: 600px) {
+  .topnav.responsive {position: relative;}
+  .topnav.responsive a.icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: center;
+  }
+}
+a.sidenav_link{
+font-size: 22px;
+line-height: 200%;
+color: #FFFFFF;
+font-family: Arial;
+}
+.sidenav {
+  height: 100%; /* Full-height: remove this if you want "auto" height */
+  width: 275px; /* Set the width of the sidebar */
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  top: 0px; /* Stay at the top */
+  left: 0px;
+  background-color: #61B748; /* Black */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 70px;
+  display: block;
+  color: #f2f2f2;
+}
+
+/* The navigation menu links */
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 24px;
+  color: #ffffff;
+  display: block;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav_link a:hover {
+background-color: #4CAF50;
+color: #FFFFFF;
+
+}
+#sidenav_heading{
+  font-size: 23px;
+  font-family: century gothic;
+  margin-left: 18px;
+}
+#sidenav_heading2{
+  font-size: 23px;
+  font-family: century gothic;
+  margin-left: 18px;
+  margin-top: 90px;
+}
+#content1 {
+  border: 1.5px solid #c9ddfc;
+  background-color: #f2f2f2;
+  width: 770px;
+  margin-left: 520px;
+  margin-top: 18px;
+  padding-top: 5px;
+  padding-bottom: 4px;
+  padding-right: 0px;
+  padding-left: 0px;
+}
+h4 {
+  text-align: center;
+  font-family: Arial;
+  margin-top: 0px;
+  font-weight: 400;
+  margin-bottom: 0px;
+  font-size: 18px;
+}
+.content1_a{
+  padding-left: 100px;
+  padding-right : 100px;
+  font-size: 16px;
+  font-family: Arial;
+  margin-top: 100px;
+  position: relative;
+}
+.content1_b{
+  padding-left: 0px;
+  padding-right : 100px;
+  font-size: 16px;
+  font-family: Arial;
+  margin-top: 100px;
+  position: relative;
+}
+.content1_c{
+  padding-left: 100px;
+  padding-right : 0px;
+  font-size: 16px;
+  font-family: Arial;
+  margin-top: 100px;
+  position: relative;
+}
+#content1_a{
+  text-align: center;
+}
+#division{
+  color:white;
+  font-weight: 800;
+  font-size: 30px;
+  margin-top: 0px;
+  padding-top: 0px;
+}
+#sort{
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+
+}
+#content2{
+  border: none;
+  background-color: white;
+  width: 770px;
+  margin-left: 520px;
+  margin-top: 18px;
+  padding:  0px 0px 0px 0px;
+
+}
+#content2 button {
+
+padding: 6px 10px;
+background: #ddd;
+font-size: 47.5px;
+border: none;
+cursor: pointer;
+float : right;
+width: 65px;
+
+}
+#content2 input[type=text] {
+padding: 6px;
+font-size: 17px;
+border: 1.5px solid #b7f7f1;
+width: calc(100% - 69px);
+height: 60px;
+float: left;
+}
+#searchr{
+margin-top: 108px;
+width: 770px;
+margin-left : 520px;
+}
+#content3{
+border: none;
+background-color: white;
+width: 770px;
+margin-left: 520px;
+margin-top: 14px;
+padding:  0px 0px 0px 0px;
+}
+#content4{
+border: none;
+background-color: white;
+width: 770px;
+margin-left: 520px;
+margin-top: 67px;
+padding:  0px 0px 0px 0px;
+}
+#profile_pic{
+height: 40px;
+width: 40px;
+border-radius: 50%;
+border : 1px solid #dcf2f0;
+float: left;
+}
+#profile_name{
+font-size: 13px;
+float: left;
+font-family: Arial;
+margin-left :10px;
+margin-top: 3px;
+color: #0441a3;
+font-weight: 600;
+}
+#post_pic{
+width :200px;
+float: left;
+}
+#post_info{
+float: right;
+width : calc(100% - 215px);
+font-family: arial;
+}
+#post{
+margin-top: 220px;
+width: 770px;
+margin-left : 520px;
+}
+#tag{
+height: 10px;
+margin-right: 3px;
+margin-top:5px;
+}
+#tags{
+color: #5C7AFD;
+font-size: 13px;
+}
+#post_title{
+font-size: 20px;
+font-family: century Gothic;
+display: block;
+}
+#visit{
+height: 14px;
+margin-top: 6px;
+}
+#star{
+height:14px;
+float: right;
+margin-top: 6px;
+margin-right: 10px;
+}
+#comment{
+height: 14px;
+margin-top: 7.5px;
+float:right;
+margin-right: 20px;
+}
