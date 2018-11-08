@@ -98,20 +98,90 @@ echo '<br/>'.$fname.' '.$lname.'<br/><br/>';
   <p id= "main_heading">My Profile</p><hr color="white"/><br/>
 <div class ="first_half">
   <form action = "upload.php" method = "post" enctype="multipart/form-data" class="image-upload">
-  <span id = "profile_image_heading">Click to change</span><br/>
+  <span id="text_over_profile" >Click to change </span>
   <label for="file-input">
        <img height="230px" width="230px" id = "profile_pic" src='<?php
-
-
-       echo "uploads/profile".$ID.".jpg
-
-       ";
+       echo "uploads/profile".$ID.".jpg";
        ?>'>
-   </label>
-   <input id = "file-input" name = "file_input" type="file"/>
 
+   </label>
+   <input id = "file-input" name = "file_input" type="file" >
+   <span id="err"> </span>
 
 </form>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function (e) {
+//$('#blah').hide();
+$('#text_over_profile').hide();
+
+$('#profile_pic').hover(function(){
+  $('#text_over_profile').show();
+  $('#profile_pic').css('opacity', '0.5');
+},
+function(){
+  $('#text_over_profile').hide();
+  $('#profile_pic').css('opacity', '1');
+});
+
+
+
+$('input[type="file"]').change(function(e) {
+
+
+var data = new FormData();
+data.append("file-input",$('input[type="file"]').val());
+
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#blah').attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+        data.append("images[]", input.files[0]);
+        $.ajax({
+               url: "file_upload.php",
+         type: "POST",
+         data: data ,
+         contentType: false,
+               cache: false,
+         processData:false,
+         beforeSend : function()
+         {
+          //$("#preview").fadeOut();
+          $("#err").fadeOut();
+         },
+         success: function(data)
+            {
+          if(data=='invalid')
+          {
+           // invalid file format.
+           $("#err").html("Invalid File !").fadeIn();
+          }
+          else
+          {
+           // view uploaded file.
+          // $("#image-list").html(data).fadeIn();
+
+          }
+            },
+           error: function(e)
+            {
+          $("#err").html(e).fadeIn();
+            }
+          });
+    }
+}
+
+readURL(this);
+
+});
+});
+</script>
+<div id="response"></div>
+  <img id="blah" src="#" type="hidden"  />
 </div>
 <hr color="white"/>
 <div class = "second_half">
@@ -139,6 +209,7 @@ echo $about_me;
   ?></textarea><br/>
   <input type = "submit" name = "submit" class = "submit" value= "Save Details">
   </form>
+
 </div>
 
 </div>
