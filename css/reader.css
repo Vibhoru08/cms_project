@@ -205,7 +205,7 @@ float: left;
 }
 #searchr{
 margin-top: 108px;
-max-width:50%;
+max-width:100%;
 /*margin-left : 520px;*/
 }
 #content3{
@@ -252,7 +252,7 @@ font-family: arial;
 }
 #post{
 margin-top: 220px;
-max-width:70%;
+max-width:100%;
 /*margin-left : 520px; */
 }
 #tag{
