@@ -58,16 +58,16 @@ $status = "approved";
     <div id = "content1_a">
     <span id = "upvotes" class= "content1_b">Upvotes</span><span id = "division">|</span><span id = "recent" class= "content1_a">Recent</span><span id = "division">|</span><span id = "oldest" class= "content1_c">Oldest</span>
     </div>
-    </div>
+    </div>-->
     <div id = "content2">
     <form>
      <input type="text" placeholder="Search from EasyWeb posts..." name="search">
     <button type="submit"><i class="fa fa-search"></i></button>
    </form>
-  </div>-->
+  </div>
   <?php if($result->num_rows == 0){
     ?>
-    <div id = "no_post_message" style="float:left;left:50%;max-width:100%;position:fixed;top:30%;">You have no posts .
+    <div id = "no_post_message" style="float:left;left:50%;max-width:100%;position:fixed;top:50%;">You have no posts .
     </div>
   <?php
    }else{
