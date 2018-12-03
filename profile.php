@@ -65,11 +65,12 @@ $nop = $result->num_rows;
 
   <div class="row mt-2" >
     <div class="col-md-4 pr-1" >
-      <div  style="background-color:white;padding:20px;height:100%;">
+      <div class="sticky-top">
+      <div  style="background-color:white;padding:20px;min-height:100vh;">
         <div style="width:80%;position:relative;left:3%;">
           <button type="button" class="btn btn-primary float-right" style="margin-right:20px;"> FOLLOW </button>
           <button type="button" class="btn btn-primary float-left" style="margin-right:20px;"> INVITE </button>
-        </div>  
+        </div>
         <br>
         <br>
          <table class="table table-hover" style="padding:10px;">
@@ -93,6 +94,7 @@ $nop = $result->num_rows;
            </tbody>
          </table>
          </div>
+       </div>
     </div>
     <div class="col-md-8 pl-1" >
       <div class="ml-0" style="background-color:white;padding:20px;min-height:100%;">
@@ -109,7 +111,7 @@ $nop = $result->num_rows;
         $post_id = $row['id'];
         $description = $row['description'];
         $linkl = 'post.php?id='.$post_id;
-        $rdes = limit_text($description,40,$linkl); 
+        $rdes = limit_text($description,40,$linkl);
         echo $rdes;
         ?>
         </span>
@@ -118,7 +120,7 @@ $nop = $result->num_rows;
       <?php }
       $stmt2->close();
       $conn->close();
-      ?>  
+      ?>
       </div>
     </div>
   </div>
