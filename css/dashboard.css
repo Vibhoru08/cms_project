@@ -1,3 +1,4 @@
+* {box-sizing: border-box;}
 body, html{
 
 padding: 0px;
@@ -6,12 +7,14 @@ margin: 0px;
 .topnav {
     background-color: #556B2F;
     overflow: hidden;
+    position: relative;
+    z-index: 1;
 }
 
 /* Style the links inside the navigation bar */
 .topnav a {
     float: left;
-    display: block ;
+    display: block;
     color: #f2f2f2;
     text-align: center;
     padding: 13px 25px 13px 25px;
@@ -22,10 +25,10 @@ margin: 0px;
 
 /* Change the color of links on hover */
 .topnav a:hover {
-
     background-color:  #ddd;
     color: black;
-    display:block;
+    display : block;
+
 }
 a.tn-small{
     font-size: 15px;
@@ -63,3 +66,237 @@ a.tn-big{
     text-align: center;
   }
 }
+a.sidenav_link{
+line-height: 130%;
+color: #FFFFFF;
+font-family: Arial;
+}
+img.sidenav_icon{
+  position:relative;
+  top:2.5px;
+}
+.sidenav {
+  height: 100%; /* Full-height: remove this if you want "auto" height */
+  width: 275px; /* Set the width of the sidebar */
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  top: 0px; /* Stay at the top */
+  left: 0px;
+  background-color: #61B748; /* Black */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 70px;
+  display: block;
+  color: #f2f2f2;
+}
+
+/* The navigation menu links */
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 18px;
+  color: #ffffff;
+  display: block;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav_link a:hover {
+background-color: #4CAF50;
+color: #FFFFFF;
+
+}
+#sidenav_heading{
+  font-size: 23px;
+  font-family: century gothic;
+  margin-left: 18px;
+  color:purple;
+  margin-bottom:10px;
+  margin-top:5px;
+}
+#sidenav_heading2{
+  font-size: 23px;
+  font-family: century gothic;
+  margin-left: 18px;
+  margin-top: 90px;
+}
+#content1 {
+  border: 1.5px solid #c9ddfc;
+  background-color: #f2f2f2;
+  max-width: 770px;
+/*  margin-left: 520px; */
+  margin-top: 18px;
+  padding-top: 5px;
+  padding-bottom: 4px;
+  padding-right: 0px;
+  padding-left: 0px;
+}
+h4 {
+  text-align: center;
+  font-family: Arial;
+  margin-top: 0px;
+  font-weight: 400;
+  margin-bottom: 0px;
+  font-size: 18px;
+}
+.content1_a{
+  padding-left: 100px;
+  padding-right : 100px;
+  font-size: 16px;
+  font-family: Arial;
+  margin-top: 100px;
+  position: relative;
+}
+.content1_b{
+  padding-left: 0px;
+  padding-right : 100px;
+  font-size: 16px;
+  font-family: Arial;
+  margin-top: 100px;
+  position: relative;
+}
+.content1_c{
+  padding-left: 100px;
+  padding-right : 0px;
+  font-size: 16px;
+  font-family: Arial;
+  margin-top: 100px;
+  position: relative;
+}
+#content1_a{
+  text-align: center;
+}
+#division{
+  color:white;
+  font-weight: 800;
+  font-size: 30px;
+  margin-top: 0px;
+  padding-top: 0px;
+}
+#sort{
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+
+}
+#content2{
+  border: none;
+  background-color: white;
+  width: 770px;
+/*  margin-left: 520px;*/
+  margin-top: 18px;
+  padding:  0px 0px 0px 0px;
+
+}
+#content2 button {
+
+padding: 6px 10px;
+background: #ddd;
+font-size: 47.5px;
+border: none;
+cursor: pointer;
+float : right;
+width: 65px;
+
+}
+#content2 input[type=text] {
+padding: 6px;
+font-size: 17px;
+border: 1.5px solid #b7f7f1;
+width: calc(100% - 69px);
+height: 60px;
+float: left;
+}
+#searchr{
+margin-top: 108px;
+max-width:100%;
+/*margin-left : 520px;*/
+}
+#content3{
+border: none;
+background-color: white;
+max-width: 770px;
+/*margin-left: 520px; */
+margin-top: 14px;
+padding:  0px 0px 0px 0px;
+}
+#content4{
+border: none;
+background-color: white;
+max-width:770px;
+/*margin-left: 520px;*/
+margin-top: 67px;
+padding:  0px 0px 0px 0px;
+}
+#profile_pic{
+height: 40px;
+width: 40px;
+border-radius: 50%;
+border : 1px solid #dcf2f0;
+float: left;
+}
+#profile_name{
+font-size: 13px;
+float: left;
+font-family: Arial;
+margin-left :10px;
+margin-top: 3px;
+color: #0441a3;
+font-weight: 600;
+}
+#post_pic{
+width :200px;
+float:left;
+}
+#post_info{
+
+float:right;
+width : calc(100% - 215px);
+font-family: arial;
+}
+#post{
+margin-top: 220px;
+max-width:100%;
+/*margin-left : 520px; */
+}
+#tag{
+height: 10px;
+margin-right: 3px;
+margin-top:5px;
+}
+#tags{
+color: #5C7AFD;
+font-size: 13px;
+}
+#post_title{
+font-size: 20px;
+font-family: century Gothic;
+display: block;
+}
+#visit{
+height: 14px;
+margin-top: 6px;
+}
+#star{
+height:14px;
+float: right;
+margin-top: 6px;
+margin-right: 10px;
+}
+#comment{
+height: 14px;
+margin-top: 7.5px;
+float:right;
+margin-right: 20px;
+}
+#no_post_message{
+  max-width:80%;
+  text-align: center;
+  position:relative;
+
+  top:40px;
+  font-size:20px;
+}
+#main{
+float: right;
+  max-width:80%;
+margin-right:12%;
+
+}
+

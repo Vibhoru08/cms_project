@@ -7,29 +7,52 @@ include('includes/validator.php');
 $ID = $_SESSION['ID'];
 $val = new validator;
 $conn = connect();
-$status = "approved";
-
-  $cat = "cat2";
-  $stmt1 = $conn->prepare("SELECT * FROM post WHERE user_id = ? ");
+if ($_GET['per'] == 'ap'){
+  $status = 'approved';
+  $stmt1 = $conn->prepare("SELECT * FROM post WHERE status=? && user_id =?");
+  // Bind a variable to the parameter as a string.
+  $stmt1->bind_param("si", $status, $ID);
+  // Execute the statement.
+  $stmt1->execute();
+  $result = $stmt1->get_result();
+}
+elseif ($_GET['per'] == 'pe'){
+  $status = "created";
+  $stmt1 = $conn->prepare("SELECT * FROM post WHERE status=? && user_id = ?");
+  // Bind a variable to the parameter as a string.
+  $stmt1->bind_param("si", $status, $ID);
+  // Execute the statement.
+  $stmt1->execute();
+  $result = $stmt1->get_result();
+}
+elseif ($_GET['per'] == 're'){
+  $status = "rejected";
+  $stmt1 = $conn->prepare("SELECT * FROM post WHERE status=? && user_id = ?");
+  // Bind a variable to the parameter as a string.
+  $stmt1->bind_param("si", $status, $ID);
+  // Execute the statement.
+  $stmt1->execute();
+  $result = $stmt1->get_result();
+}
+else {
+  $stmt1 = $conn->prepare("SELECT * FROM post WHERE user_id = ?");
   // Bind a variable to the parameter as a string.
   $stmt1->bind_param("i", $ID);
   // Execute the statement.
   $stmt1->execute();
   $result = $stmt1->get_result();
-
-
-
+}
 
 ?>
 <html>
 <head>
-  <link rel = "stylesheet" type = "text/css" href = "css/dashboard.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel = "stylesheet" type = "text/css" href = "css/reader.css">
   <title>Dashboard | Start writing</title>
   </head>
 <body>
   <div class="topnav" id="myTopnav">
-  <a href="dashboard.php" class="tn-small" title = "See your sites here"><img src = "images/nav-home.png" height = "26px"/></a>
+  <a href="#" class="tn-small" title = "See your sites here"><img src = "images/nav-home.png" height = "26px"/></a>
   <a href="reader.php" class="tn-small" title = "Sites that you follow"><img src = "images/nav-reader.png" height = "26px"/></a>
     <a href="#" class="tn-small" style="float:right; margin-right:25px;" title = "See your notifications here"><img src = "images/nav-bell.png" height = "26px"/></a>
     <a href="update.php" class = "tn-small" style="float:right;" title = "Edit your profile here"><img src = "images/nav-user.png" height = "26px"/></a>
@@ -37,28 +60,16 @@ $status = "approved";
 
 
   </div>
-
   <div class="sidenav">
-    <p id = "sidenav_heading">My Profile</p>
+    <p id = "sidenav_heading">My Posts</p>
   <div class = "sidenav_link">
-    <a href = "reader.php?cat=sp" class = "sidenav_link"><img class = "sidenav_icon" src = "images/main-bell.png" height ="18px"> &nbsp;Name</a>
-    <a href = "reader.php?cat=po" class = "sidenav_link"><img class = "sidenav_icon" src = "images/main-bell.png" height ="18px"> &nbsp;Total Posts</a>
-    <a href = "reader.php?cat=en" class = "sidenav_link"><img class = "sidenav_icon" src = "images/main-bell.png" height ="18px"> &nbsp;Total Comments</a>
-    <a href = "reader.php?cat=ar" class = "sidenav_link"><img class = "sidenav_icon" src = "images/main-bell.png" height ="18px"> &nbsp;Total Likes</a>
-
-
+    <a href = "dashboard.php?per=ap" class = "sidenav_link"><img class = "sidenav_icon" src = "images/side-sports.png" height ="18px"> &nbsp;Approved</a>
+    <a href = "dashboard.php?per=pe" class = "sidenav_link"><img class = "sidenav_icon" src = "images/side-politics.png" height ="18px"> &nbsp;Pending</a>
+    <a href = "dashboard.php?per=re" class = "sidenav_link"><img class = "sidenav_icon" src = "images/side-tv.png" height ="18px"> &nbsp;Rejected</a>
+    
   </div>
   </div>
-
-
   <div id = "main">
-    <!--    <div id = "content1">
-      <h4> Sort By </h4>
-      <hr color = "white" id = "sort"/>
-    <div id = "content1_a">
-    <span id = "upvotes" class= "content1_b">Upvotes</span><span id = "division">|</span><span id = "recent" class= "content1_a">Recent</span><span id = "division">|</span><span id = "oldest" class= "content1_c">Oldest</span>
-    </div>
-    </div>-->
     <div id = "content2">
     <form>
      <input type="text" placeholder="Search from EasyWeb posts..." name="search">
@@ -67,12 +78,12 @@ $status = "approved";
   </div>
   <?php if($result->num_rows == 0){
     ?>
-    <div id = "no_post_message" style="float:left;left:50%;max-width:100%;position:fixed;top:50%;">You have no posts .
+    <div id = "no_post_message">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;There are no posts under this category.
     </div>
   <?php
    }else{
    ?>
-
+    <hr color = "#aff7f0" id = "searchr"/>
     <?php
     while ($row = $result->fetch_assoc()){
      $post_id = $row['id'];
@@ -101,15 +112,15 @@ $status = "approved";
       <?php
       echo $row['title'];
        ?></span><a href = "#" id = "<?php echo $post_id; ?>"></a><br/>
-  <?php
-  $description = $row['description'];
-  $linkl = 'post.php?id='.$post_id;
-  $rdes = limit_text($description,40,$linkl);
-  echo $rdes;
-  ?>
+<?php
+$description = $row['description'];
+$linkl = 'post.php?id='.$post_id;
+$rdes = limit_text($description,40,$linkl);
+echo $rdes;
+?>
       <br/>
         <a style="text-decoration:none;" href = "post.php?id=<?php
-  echo $post_id;
+echo $post_id;
         ?>"><img src = "images/visit.png" id = "visit"><span style= "font-size:13px;margin-left:3px;color:#C36CEE">Visit</span></a>
         <img src = "images/chat.png" id = "comment">
         <img src = "images/star.png" id = "star">
@@ -117,14 +128,13 @@ $status = "approved";
     </div>
     <hr id = "post" color = "#aff7f0"/>
     <?php
-  }
-  $stmt1->close();
-  $conn->close();
+}
+$stmt1->close();
+$conn->close();
     ?>
   </div>
-  <?php
+<?php
    }
-  ?>
-
+?>
 </body>
 </html>
