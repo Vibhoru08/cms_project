@@ -98,12 +98,7 @@ else {
     <a href = "reader.php?cat=li" class = "sidenav_link"><img class = "sidenav_icon" src = "images/side-literature.png" height ="18px"> &nbsp;Literature</a>
     <a href = "reader.php?cat=sc" class = "sidenav_link"><img class = "sidenav_icon" src = "images/side-science.png" height ="18px"> &nbsp;Science</a>
 
-<p id = "sidenav_heading2">Following</p>
-<div class = "sidenav_link">
-  <a href = "update.php" class = "sidenav_link"><img class = "sidenav_icon" src = "images/side-user.png" height ="24px"> &nbsp;XXX</a>
-  <a href = "account.php" class = "sidenav_link"><img class = "sidenav_icon" src = "images/side-setting.png" height ="24px"> &nbsp;YYY</a>
-  <a href = "security.php" class = "sidenav_link"><img class = "sidenav_icon" src = "images/side-lock.png" height ="24px"> &nbsp;ZZZ</a>
-</div>
+
   </div>
   </div>
   <div id = "main">
@@ -134,7 +129,7 @@ else {
     ?>
   <div id = "content3">
         <img src = "uploads/default.png" id = "profile_pic">
-      <span id ="profile_name"><?php
+      <span id ="profile_name"><a style= "text-decoration:none;" href = "profile.php?id=<?php echo $row['user_id']; ?>"><?php
       $user_id = $row['user_id'];
 
 
@@ -148,7 +143,7 @@ else {
 
 
        echo $name;
-       ?><br/><img src= "images/tag.png" id = "tag"><span id = "tags"><?php echo $row['category']; ?></span></span>
+       ?></a><br/><img src= "images/tag.png" id = "tag"><span id = "tags"><?php echo $row['category']; ?></span></span>
     </div>
     <div id = "content4">
     <img src = "images/signup-image2.jpg" id = "post_pic"/>

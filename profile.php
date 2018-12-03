@@ -1,6 +1,29 @@
 <?php
 include('includes/config.php');
 include('includes/checklogin.php');
+include('includes/db.php');
+include('includes/validator.php');
+include('includes/word_limiter.php');
+$val = new validator;
+$user_id = $val->Xss_safe($_GET['id']);
+$conn = connect();
+$stmt1 = $conn->prepare("SELECT * FROM user WHERE id=?");
+// Bind a variable to the parameter as a string.
+$stmt1->bind_param("i", $user_id);
+ // Execute the statement.
+$stmt1->execute();
+$result = $stmt1->get_result();
+$row = $result->fetch_assoc();
+$dname = $row['display_name'];
+$fname = $row['first_name'];
+$lname = $row['last_name'];
+$about = $row['about'];
+$stmt1->close();
+$stmt2 = $conn->prepare("SELECT * FROM post WHERE user_id=?");
+$stmt2->bind_param("i", $user_id);
+$stmt2->execute();
+$result = $stmt2->get_result();
+$nop = $result->num_rows;
 ?>
 <html>
 <head>
@@ -17,7 +40,7 @@ include('includes/checklogin.php');
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel = "stylesheet" type = "text/css" href = "css/dashboard.css">
-  <title>PROFILE</title>
+  <title>EazyWeb | View Profile</title>
   </head>
 <body style="background-color:grey;">
   <div class="topnav" id="myTopnav">
@@ -33,8 +56,9 @@ include('includes/checklogin.php');
 <div class="container">
   <div class="row mb-2" >
     <div class="col-md-12" >
-      <div style="background-color:white;padding:20px;">
-        <img class="rounded-circle mx-auto d-block" src="images/img_avatar.png" style="height:300px;width:300px;">
+      <div style="background-color:white;padding:20px 0px 1px 0px;">
+        <img class="rounded-circle mx-auto d-block" src="images/img_avatar.png" style="height:200px;">
+        <p style="text-align:center;font-size:25px;font-family:Verdana;margin-top:14px;color:blue;"><?php echo $dname; ?></p>
       </div>
     </div>
   </div>
@@ -42,22 +66,29 @@ include('includes/checklogin.php');
   <div class="row mt-2" >
     <div class="col-md-4 pr-1" >
       <div  style="background-color:white;padding:20px;height:100%;">
-        <button type="button" class="btn btn-primary float-right" style="margin-right:20px;"> FOLLOW </button>
-         <div style="margin-left:15px;" >Intro</div>
-         <br>
+        <div style="width:80%;position:relative;left:3%;">
+          <button type="button" class="btn btn-primary float-right" style="margin-right:20px;"> FOLLOW </button>
+          <button type="button" class="btn btn-primary float-left" style="margin-right:20px;"> INVITE </button>
+        </div>  
+        <br>
+        <br>
          <table class="table table-hover" style="padding:10px;">
            <tbody>
              <tr>
                <td>Name </td>
-               <td> php </td>
+               <td><?php echo $fname.' '.$lname; ?></td>
              </tr>
              <tr>
-               <td>Followers</td>
-               <td>php </td>
+               <td>About Me</td>
+               <td><?php echo $about; ?></td>
+             </tr>
+             <tr>
+               <td>Numbers of Followers</td>
+               <td>6</td>
              </tr>
              <tr>
                <td> Total Posts</td>
-               <td>php </td>
+               <td><?php echo $nop; ?></td>
              </tr>
            </tbody>
          </table>
@@ -65,8 +96,29 @@ include('includes/checklogin.php');
     </div>
     <div class="col-md-8 pl-1" >
       <div class="ml-0" style="background-color:white;padding:20px;min-height:100%;">
-      All the posts go here.
-      Php for posts here.
+      <?php
+      while($row = $result->fetch_assoc()){
+      ?>
+        <div>
+          <span style = "color:blue;font-family:Courier;font-size:22px;font-weight:bold;"><?php echo $row['title']; ?></span>
+        </div>
+        <br>
+        <div>
+        <span style="font-family:arial;color:green;font-size:17px;">
+        <?php
+        $post_id = $row['id'];
+        $description = $row['description'];
+        $linkl = 'post.php?id='.$post_id;
+        $rdes = limit_text($description,40,$linkl); 
+        echo $rdes;
+        ?>
+        </span>
+        </div>
+        <hr style="color:blue;">
+      <?php }
+      $stmt2->close();
+      $conn->close();
+      ?>  
       </div>
     </div>
   </div>
