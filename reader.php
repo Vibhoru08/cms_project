@@ -114,21 +114,15 @@ else {
     <span id = "upvotes" class= "content1_b">Upvotes</span><span id = "division">|</span><span id = "recent" class= "content1_a">Recent</span><span id = "division">|</span><span id = "oldest" class= "content1_c">Oldest</span>
     </div>
     </div>
-    
     <div id = "content2">
     <form>
-    <input type="text" placeholder="Search from EasyWeb posts..." name="search">
+     <input type="text" placeholder="Search from EasyWeb posts..." name="search">
     <button type="submit"><i class="fa fa-search"></i></button>
-    </form>
-    
-
+   </form>
   </div>
   <?php if($result->num_rows == 0){
     ?>
-    <div id = "no_post_message">
-    <?php    
-      echo "There are no posts under this category.";
-    ?>
+    <div id = "no_post_message">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;There are no posts under this category.
     </div>
   <?php
    }else{
@@ -185,6 +179,6 @@ $conn->close();
   </div>
 <?php
    }
-?>  
+?>
 </body>
 </html>

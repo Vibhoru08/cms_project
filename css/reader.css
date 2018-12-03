@@ -107,7 +107,7 @@ color: #FFFFFF;
   font-size: 23px;
   font-family: century gothic;
   margin-left: 18px;
-  color:purple; 
+  color:purple;
   margin-bottom:10px;
   margin-top:5px;
 }
@@ -120,8 +120,8 @@ color: #FFFFFF;
 #content1 {
   border: 1.5px solid #c9ddfc;
   background-color: #f2f2f2;
-  width: 770px;
-  margin-left: 520px;
+  max-width: 770px;
+/*  margin-left: 520px; */
   margin-top: 18px;
   padding-top: 5px;
   padding-bottom: 4px;
@@ -179,7 +179,7 @@ h4 {
   border: none;
   background-color: white;
   width: 770px;
-  margin-left: 520px;
+/*  margin-left: 520px;*/
   margin-top: 18px;
   padding:  0px 0px 0px 0px;
 
@@ -285,8 +285,16 @@ float:right;
 margin-right: 20px;
 }
 #no_post_message{
+  max-width:80%;
+  text-align: center;
   position:relative;
-  right:45.7%;
-  top:20px;
+
+  top:40px;
   font-size:20px;
+}
+#main{
+float: right;
+  max-width:80%;
+  margin-right: 12%;
+
 }
