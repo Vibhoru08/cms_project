@@ -31,16 +31,16 @@ include('includes/checklogin.php');
   </div>
 
 <div class="container">
-  <div class="row">
-    <div class="col-md-12">
+  <div class="row mb-2" >
+    <div class="col-md-12" >
       <div style="background-color:white;padding:20px;">
         <img class="rounded-circle mx-auto d-block" src="images/img_avatar.png" style="height:300px;width:300px;">
       </div>
     </div>
   </div>
-  <br/>
-  <div class="row">
-    <div class="col-md-4 " >
+
+  <div class="row mt-2" >
+    <div class="col-md-4 pr-1" >
       <div  style="background-color:white;padding:20px;height:100%;">
         <button type="button" class="btn btn-primary float-right" style="margin-right:20px;"> FOLLOW </button>
          <div style="margin-left:15px;" >Intro</div>
@@ -63,7 +63,7 @@ include('includes/checklogin.php');
          </table>
          </div>
     </div>
-    <div class="col-md-8" >
+    <div class="col-md-8 pl-1" >
       <div class="ml-0" style="background-color:white;padding:20px;min-height:100%;">
       All the posts go here.
       Php for posts here.
