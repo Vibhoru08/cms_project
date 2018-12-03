@@ -7,7 +7,6 @@
 <body>
   <div class="topnav" id="myTopnav">
   <a href="welcome.php" class="tn-big">EasyWeb.com</a>
-  <a href="pricing.php" class="tn-small" >Pricing</a>
   <a href="support.php" class="tn-small" >Support</a>
   <a href="signup.php" class = "tn-small" style="float:right;">Get started</a>
   <a href="login.php" class="tn-small" style="float:right;">Login</a>

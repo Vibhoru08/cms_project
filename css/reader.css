@@ -67,10 +67,13 @@ a.tn-big{
   }
 }
 a.sidenav_link{
-font-size: 22px;
-line-height: 200%;
+line-height: 130%;
 color: #FFFFFF;
 font-family: Arial;
+}
+img.sidenav_icon{
+  position:relative;
+  top:2.5px;
 }
 .sidenav {
   height: 100%; /* Full-height: remove this if you want "auto" height */
@@ -89,7 +92,7 @@ font-family: Arial;
 .sidenav a {
   padding: 6px 8px 6px 16px;
   text-decoration: none;
-  font-size: 24px;
+  font-size: 18px;
   color: #ffffff;
   display: block;
 }
@@ -104,6 +107,9 @@ color: #FFFFFF;
   font-size: 23px;
   font-family: century gothic;
   margin-left: 18px;
+  color:purple; 
+  margin-bottom:10px;
+  margin-top:5px;
 }
 #sidenav_heading2{
   font-size: 23px;
@@ -277,4 +283,10 @@ height: 14px;
 margin-top: 7.5px;
 float:right;
 margin-right: 20px;
+}
+#no_post_message{
+  position:relative;
+  right:45.7%;
+  top:20px;
+  font-size:20px;
 }

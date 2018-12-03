@@ -127,7 +127,6 @@ if (!empty($_POST)){
 <div class="bg-img">
   <div class="topnav" id="myTopnav">
   <a href="welcome.php" class="tn-big">EasyWeb.com</a>
-  <a href="pricing.php" class="tn-big" >Pricing</a>
   <a href="support.php" class="tn-big" >Support</a>
   <a href="signup.php" class = "tn-big" style="float:right;">Get started</a>
   <a href="login.php" class="tn-big" style="float:right;">Login</a>

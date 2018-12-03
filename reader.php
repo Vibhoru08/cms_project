@@ -8,21 +8,74 @@ $ID = $_SESSION['ID'];
 $val = new validator;
 $conn = connect();
 $status = "approved";
-$stmt1 = $conn->prepare("SELECT * FROM post WHERE status=? && user_id != ?");
-
- // Bind a variable to the parameter as a string.
- $stmt1->bind_param("si", $status, $ID);
-
- // Execute the statement.
- $stmt1->execute();
- $result = $stmt1->get_result();
-
+if ($_GET['cat'] == 'sp'){
+  $cat = "cat2";
+  $stmt1 = $conn->prepare("SELECT * FROM post WHERE status=? && user_id != ? && category =?");
+  // Bind a variable to the parameter as a string.
+  $stmt1->bind_param("sis", $status, $ID, $cat);
+  // Execute the statement.
+  $stmt1->execute();
+  $result = $stmt1->get_result();
+}
+elseif ($_GET['cat'] == 'po'){
+  $cat = "politics";
+  $stmt1 = $conn->prepare("SELECT * FROM post WHERE status=? && user_id != ? && category =?");
+  // Bind a variable to the parameter as a string.
+  $stmt1->bind_param("sis", $status, $ID, $cat);
+  // Execute the statement.
+  $stmt1->execute();
+  $result = $stmt1->get_result();
+}
+elseif ($_GET['cat'] == 'en'){
+  $cat = "entertainment";
+  $stmt1 = $conn->prepare("SELECT * FROM post WHERE status=? && user_id != ? && category =?");
+  // Bind a variable to the parameter as a string.
+  $stmt1->bind_param("sis", $status, $ID, $cat);
+  // Execute the statement.
+  $stmt1->execute();
+  $result = $stmt1->get_result();
+}
+elseif ($_GET['cat'] == 'ar'){
+  $cat = "art";
+  $stmt1 = $conn->prepare("SELECT * FROM post WHERE status=? && user_id != ? && category =?");
+  // Bind a variable to the parameter as a string.
+  $stmt1->bind_param("sis", $status, $ID, $cat);
+  // Execute the statement.
+  $stmt1->execute();
+  $result = $stmt1->get_result();
+}
+elseif ($_GET['cat'] == 'li'){
+  $cat = "literature";
+  $stmt1 = $conn->prepare("SELECT * FROM post WHERE status=? && user_id != ? && category =?");
+  // Bind a variable to the parameter as a string.
+  $stmt1->bind_param("sis", $status, $ID, $cat);
+  // Execute the statement.
+  $stmt1->execute();
+  $result = $stmt1->get_result();
+}
+elseif ($_GET['cat'] == 'sc'){
+  $cat = "science";
+  $stmt1 = $conn->prepare("SELECT * FROM post WHERE status=? && user_id != ? && category =?");
+  // Bind a variable to the parameter as a string.
+  $stmt1->bind_param("sis", $status, $ID, $cat);
+  // Execute the statement.
+  $stmt1->execute();
+  $result = $stmt1->get_result();
+}
+else {
+  $stmt1 = $conn->prepare("SELECT * FROM post WHERE status=? && user_id != ?");
+  // Bind a variable to the parameter as a string.
+  $stmt1->bind_param("si", $status, $ID);
+  // Execute the statement.
+  $stmt1->execute();
+  $result = $stmt1->get_result();
+}
 
 ?>
 <html>
 <head>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel = "stylesheet" type = "text/css" href = "css/reader.css">
+  <link rel = "stylesheet" type = "text/css" href = "css/reader.css">
   <title>Dashboard | Start writing</title>
   </head>
 <body>
@@ -38,9 +91,12 @@ $stmt1 = $conn->prepare("SELECT * FROM post WHERE status=? && user_id != ?");
   <div class="sidenav">
     <p id = "sidenav_heading">Categories</p>
   <div class = "sidenav_link">
-    <a href = "update.php" class = "sidenav_link"><img class = "sidenav_icon" src = "images/side-user.png" height ="24px"> &nbsp;Sports</a>
-    <a href = "account.php" class = "sidenav_link"><img class = "sidenav_icon" src = "images/side-setting.png" height ="24px"> &nbsp;Entertainment</a>
-    <a href = "security.php" class = "sidenav_link"><img class = "sidenav_icon" src = "images/side-lock.png" height ="24px"> &nbsp;Politics</a>
+    <a href = "reader.php?cat=sp" class = "sidenav_link"><img class = "sidenav_icon" src = "images/side-sports.png" height ="18px"> &nbsp;Sports</a>
+    <a href = "reader.php?cat=po" class = "sidenav_link"><img class = "sidenav_icon" src = "images/side-politics.png" height ="18px"> &nbsp;Politics</a>
+    <a href = "reader.php?cat=en" class = "sidenav_link"><img class = "sidenav_icon" src = "images/side-tv.png" height ="18px"> &nbsp;Entertainment</a>
+    <a href = "reader.php?cat=ar" class = "sidenav_link"><img class = "sidenav_icon" src = "images/side-art.png" height ="18px"> &nbsp;Art</a>
+    <a href = "reader.php?cat=li" class = "sidenav_link"><img class = "sidenav_icon" src = "images/side-literature.png" height ="18px"> &nbsp;Literature</a>
+    <a href = "reader.php?cat=sc" class = "sidenav_link"><img class = "sidenav_icon" src = "images/side-science.png" height ="18px"> &nbsp;Science</a>
 
 <p id = "sidenav_heading2">Following</p>
 <div class = "sidenav_link">
@@ -56,17 +112,27 @@ $stmt1 = $conn->prepare("SELECT * FROM post WHERE status=? && user_id != ?");
       <hr color = "white" id = "sort"/>
     <div id = "content1_a">
     <span id = "upvotes" class= "content1_b">Upvotes</span><span id = "division">|</span><span id = "recent" class= "content1_a">Recent</span><span id = "division">|</span><span id = "oldest" class= "content1_c">Oldest</span>
-  </div>
     </div>
+    </div>
+    
     <div id = "content2">
-      <form>
+    <form>
     <input type="text" placeholder="Search from EasyWeb posts..." name="search">
-      <button type="submit"><i class="fa fa-search"></i></button>
-
+    <button type="submit"><i class="fa fa-search"></i></button>
     </form>
+    
 
   </div>
-
+  <?php if($result->num_rows == 0){
+    ?>
+    <div id = "no_post_message">
+    <?php    
+      echo "There are no posts under this category.";
+    ?>
+    </div>
+  <?php
+   }else{
+   ?>
     <hr color = "#aff7f0" id = "searchr"/>
     <?php
     while ($row = $result->fetch_assoc()){
@@ -117,9 +183,8 @@ $stmt1->close();
 $conn->close();
     ?>
   </div>
-
-
-
-
+<?php
+   }
+?>  
 </body>
 </html>

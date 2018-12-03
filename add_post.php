@@ -99,11 +99,20 @@ if (!empty($_POST)){
       ?>
 
     <div id = "category">
-      <label for = "category">Category&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-</label>&nbsp;&nbsp;&nbsp;
-      <input type = "radio" name = "category" value = "cat1" class="radio_table"> &nbsp;Category 1
+      <label for = "category">Category &nbsp;&nbsp;&nbsp;&nbsp;-</label>&nbsp;&nbsp;&nbsp;&nbsp;
+      <select name = "category">
+      <option value = "" selected>----Choose An Option----</option>
+      <option value = "sports">Sports</option>
+      <option value = "politics">Politics</option>
+      <option value = "entertainment">Entertainment</option>
+      <option value = "art">Art</option>
+      <option value = "literature">Literature</option>
+      <option value = "science">Science</option>      
+      </select>
+      <!--<input type = "radio" name = "category" value = "cat1" class="radio_table"> &nbsp;Category 1
         &nbsp; <input type = "radio" name = "category" value = "cat2" class="radio_table"> &nbsp;Category 2 &nbsp;&nbsp;&nbsp;
         <input type = "radio" name = "category" value = "cat3" class="radio_table"> &nbsp;&nbsp;&nbsp;
-        Category 3
+        Category 3-->
 
       </div>
       <?php
