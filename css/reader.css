@@ -205,22 +205,22 @@ float: left;
 }
 #searchr{
 margin-top: 108px;
-width: 770px;
-margin-left : 520px;
+max-width:50%;
+/*margin-left : 520px;*/
 }
 #content3{
 border: none;
 background-color: white;
-width: 770px;
-margin-left: 520px;
+max-width: 770px;
+/*margin-left: 520px; */
 margin-top: 14px;
 padding:  0px 0px 0px 0px;
 }
 #content4{
 border: none;
 background-color: white;
-width: 770px;
-margin-left: 520px;
+max-width:770px;
+/*margin-left: 520px;*/
 margin-top: 67px;
 padding:  0px 0px 0px 0px;
 }
@@ -242,17 +242,18 @@ font-weight: 600;
 }
 #post_pic{
 width :200px;
-float: left;
+float:left;
 }
 #post_info{
-float: right;
+
+float:right;
 width : calc(100% - 215px);
 font-family: arial;
 }
 #post{
 margin-top: 220px;
-width: 770px;
-margin-left : 520px;
+max-width:70%;
+/*margin-left : 520px; */
 }
 #tag{
 height: 10px;
@@ -295,6 +296,6 @@ margin-right: 20px;
 #main{
 float: right;
   max-width:80%;
-  margin-right: 12%;
+margin-right:12%;
 
 }
