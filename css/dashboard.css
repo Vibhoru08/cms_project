@@ -11,7 +11,7 @@ margin: 0px;
 /* Style the links inside the navigation bar */
 .topnav a {
     float: left;
-    display: block;
+    display: block ;
     color: #f2f2f2;
     text-align: center;
     padding: 13px 25px 13px 25px;
@@ -22,9 +22,10 @@ margin: 0px;
 
 /* Change the color of links on hover */
 .topnav a:hover {
+
     background-color:  #ddd;
     color: black;
-    height: 26px;
+    display:block;
 }
 a.tn-small{
     font-size: 15px;
