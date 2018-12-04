@@ -322,9 +322,9 @@ h1{
     <a href = "reader.php#<?php echo $ID;?>"><img src = "images/back.png" class = "back_arrow"></a>
     </div>
    <div id = "profile_info">
-     <img src = "images/img_avatar.png" alt = "avatar" id = "profile_image"><br/>
-<?php
-echo '<br/>'.$name.'<br/><span id ="follower">X number of followers</span>';
+     <img src = "images/profile<?php echo $user_id; ?>.jpg" alt = "avatar" id = "profile_image"><br/>
+<a style="text-decoration:none;" href = "profile.php?id=<?php echo $user_id; ?>"><?php
+echo '<br/>'.$name.'</a><br/><span id ="follower">X number of followers</span>';
 ?>
 <br/>
 <a id = "follow" href = "#">Follow</a>
@@ -380,11 +380,11 @@ else{
 <div id = "comment">
 <span id = "comment_t"><?php
 if (!empty($dname)){
-  echo '<a href = "#" style = "text-decoration:none;">'.$dname.'</a>';
+  echo '<a href = "profile.php?id='.$mem_id.'" style = "text-decoration:none;">'.$dname.'</a>';
 }
 else{
   $fullname = $fname." ".$lname;
-echo '<a href = "#" style = "text-decoration:none;">'.ucwords("$fullname").'</a>';
+echo '<a href = "profile.php?id=$mem_id" style = "text-decoration:none;">'.ucwords("$fullname").'</a>';
 }
 ?></span>
 <span id = "comment_time"><?php
@@ -415,7 +415,7 @@ $conn->close();
 ?>
 <br/>
 <div id = "comment_field">
-<image src = "images/img_avatar.png" id = "comment_img">
+<image src = "images/profile<?php echo $MID;?>.jpg" id = "comment_img">
 <form action = "" method = "post">
   <input type = "text" name = "com" required>
   <input type = "submit" class = "submit" value = "Comment">

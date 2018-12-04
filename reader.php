@@ -128,7 +128,7 @@ else {
      $post_id = $row['id'];
     ?>
   <div id = "content3">
-        <img src = "uploads/default.png" id = "profile_pic">
+        <img src = "images/profile<?php echo $row['user_id']; ?>.jpg" id = "profile_pic">
       <span id ="profile_name"><a style= "text-decoration:none;" href = "profile.php?id=<?php echo $row['user_id']; ?>"><?php
       $user_id = $row['user_id'];
 
@@ -154,7 +154,7 @@ else {
 <?php
 $description = $row['description'];
 $linkl = 'post.php?id='.$post_id;
-$rdes = limit_text($description,40,$linkl);
+$rdes = limit_text($description,30,$linkl);
 echo $rdes;
 ?>
       <br/>

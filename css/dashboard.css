@@ -67,7 +67,7 @@ a.tn-big{
   }
 }
 a.sidenav_link{
-line-height: 130%;
+line-height: 200%;
 color: #FFFFFF;
 font-family: Arial;
 }
@@ -107,9 +107,9 @@ color: #FFFFFF;
   font-size: 23px;
   font-family: century gothic;
   margin-left: 18px;
-  color:purple;
-  margin-bottom:10px;
-  margin-top:5px;
+  color:blue;
+  margin-bottom:25px;
+  margin-top:0px;
 }
 #sidenav_heading2{
   font-size: 23px;

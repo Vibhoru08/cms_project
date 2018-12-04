@@ -47,7 +47,7 @@ else {
 <html>
 <head>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel = "stylesheet" type = "text/css" href = "css/reader.css">
+  <link rel = "stylesheet" type = "text/css" href = "css/dashboard.css">
   <title>Dashboard | Start writing</title>
   </head>
 <body>
@@ -63,9 +63,9 @@ else {
   <div class="sidenav">
     <p id = "sidenav_heading">My Posts</p>
   <div class = "sidenav_link">
-    <a href = "dashboard.php?per=ap" class = "sidenav_link"><img class = "sidenav_icon" src = "images/side-sports.png" height ="18px"> &nbsp;Approved</a>
-    <a href = "dashboard.php?per=pe" class = "sidenav_link"><img class = "sidenav_icon" src = "images/side-politics.png" height ="18px"> &nbsp;Pending</a>
-    <a href = "dashboard.php?per=re" class = "sidenav_link"><img class = "sidenav_icon" src = "images/side-tv.png" height ="18px"> &nbsp;Rejected</a>
+    <a href = "dashboard.php?per=ap" class = "sidenav_link"><img class = "sidenav_icon" src = "images/approve.png" height ="18px"> &nbsp;Approved</a>
+    <a href = "dashboard.php?per=pe" class = "sidenav_link"><img class = "sidenav_icon" src = "images/pending.png" height ="18px"> &nbsp;Pending</a>
+    <a href = "dashboard.php?per=re" class = "sidenav_link"><img class = "sidenav_icon" src = "images/reject.png" height ="18px"> &nbsp;Rejected</a>
     
   </div>
   </div>
@@ -89,7 +89,7 @@ else {
      $post_id = $row['id'];
     ?>
   <div id = "content3">
-        <img src = "uploads/default.png" id = "profile_pic">
+        <img src = "images/profile<?php echo $row['user_id'];?>.jpg" id = "profile_pic">
       <span id ="profile_name"><a style= "text-decoration:none;" href = "profile.php?id=<?php echo $row['user_id']; ?>"><?php
       $user_id = $row['user_id'];
 

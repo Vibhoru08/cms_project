@@ -57,7 +57,7 @@ $nop = $result->num_rows;
   <div class="row mb-2" >
     <div class="col-md-12" >
       <div style="background-color:white;padding:20px 0px 1px 0px;">
-        <img class="rounded-circle mx-auto d-block" src="images/img_avatar.png" style="height:200px;">
+        <img class="rounded-circle mx-auto d-block" src="images/profile<?php echo $user_id;?>.jpg" style="height:200px;">
         <p style="text-align:center;font-size:25px;font-family:Verdana;margin-top:14px;color:blue;"><?php echo $dname; ?></p>
       </div>
     </div>
