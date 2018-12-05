@@ -106,7 +106,7 @@ echo '<br/>'.$fname.' '.$lname.'<br/><br/>';
 
    </label>
    <input id = "file-input" name = "file_input" type="file" >
-   <span id="err"> </span>
+   <span id="err" > </span>
 
 </form>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -137,6 +137,7 @@ function readURL(input) {
         var reader = new FileReader();
 
         reader.onload = function (e) {
+            $("#blah").show();
             $('#blah').attr('src', e.target.result);
         }
         reader.readAsDataURL(input.files[0]);
@@ -181,7 +182,7 @@ readURL(this);
 });
 </script>
 <div id="response"></div>
-  <img id="blah" src="#" type="hidden"  />
+  <img id="blah" src="#" style="display:none;" type="hidden"  />
 </div>
 <hr color="white"/>
 <div class = "second_half">
