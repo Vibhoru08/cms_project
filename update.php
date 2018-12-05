@@ -25,6 +25,7 @@ $stmt = $conn->prepare("SELECT * FROM user WHERE id=?");
   $email = $row['email'];
   $about_me = $row['about'];
   $dname = $row['display_name'];
+  $pic = $row['profile_pic'];
     $stmt->close();
 
     if (!empty($_POST)){
@@ -63,19 +64,14 @@ $conn->close();
   </div>
 
 <div class="sidenav">
-  <div class= "container">
+  <div class= "container1">
   <img src="<?php
   $conn = connect();
-  $stmt = $conn->prepare("SELECT status FROM profile_image WHERE user_id=?");
-  $stmt->bind_param("i", $ID);
-  $stmt->execute();
-  $stmt->bind_result($status);
-  $stmt->fetch();
-  if ($status == '0'){
-    echo "uploads/default.png";
+  if($pic == ""){
+    echo "images/img_avatar.png";
   }
   else{
-    echo "uploads/profile".$ID.".jpg";
+    echo "uploads/$pic";
   }
   $conn->close();
   ?>" alt="Avatar" class="avatar">
@@ -102,8 +98,12 @@ echo '<br/>'.$fname.' '.$lname.'<br/><br/>';
   <span id="text_over_profile" style="position:absolute;float:left;left:820px;font-weight:bold;font-size:18px;top:300px;display:none;" >Click to change </span>
   <label for="file-input">
        <img height="230px" width="230px" id = "profile_pic" src='<?php
-       echo "uploads/profile".$ID.".jpg";
-       ?>'>
+       if($pic == ""){
+         echo "images/img_avatar.png";
+       }
+       else{
+         echo "uploads/$pic";
+       }?>'>
 
    </label>
    <input id = "file-input" name = "file_input" type="file" >
@@ -130,7 +130,7 @@ function(){
 $('input[type="file"]').change(function(e) {
   var name = document.getElementById("file-input").files[0].name;
     var ext = name.split('.').pop().toLowerCase();
-    if(jQuery.inArray(ext, ['gif','png','jpg','jpeg']) == -1)
+    if(jQuery.inArray(ext, ['png','jpg','jpeg']) == -1)
     {
      alert("Invalid Image File");
     }
@@ -199,7 +199,7 @@ function readURL(input) {
 });
 </script>
 <div id="response"></div>
-  <img id="blah" src="#" style="width:300px;height:300px;display:none;" type="hidden"  />
+  <img id="blah" src="#" style="width:100px;height:100px;display:none;" type="hidden"  />
 </div>
 <hr color="white"/>
 <div class = "second_half">

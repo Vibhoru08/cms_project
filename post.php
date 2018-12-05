@@ -30,11 +30,13 @@ $title = $row['title'];
 $description = $row['description'];
 $category = $row['category'];
 $stmt->close();
-$stmt = $conn->prepare("SELECT display_name FROM user WHERE id=?");
+$stmt = $conn->prepare("SELECT * FROM user WHERE id=?");
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
-$stmt->bind_result($name);
-$stmt->fetch();
+$result = $stmt->get_result();
+$row= $result->fetch_assoc();
+$name = $row['display_name'];
+$pic1 = $row['profile_pic'];
 $stmt->close();
 
 ?>
@@ -322,7 +324,12 @@ h1{
     <a href = "reader.php#<?php echo $ID;?>"><img src = "images/back.png" class = "back_arrow"></a>
     </div>
    <div id = "profile_info">
-     <img src = "images/profile<?php echo $user_id; ?>.jpg" alt = "avatar" id = "profile_image"><br/>
+     <img src = "<?php if($pic1==""){
+       echo "images/img_avatar.png";
+     }
+     else{
+       echo "uploads/$pic1";
+     } ?>" alt = "avatar" id = "profile_image"><br/>
 <a style="text-decoration:none;" href = "profile.php?id=<?php echo $user_id; ?>"><?php
 echo '<br/>'.$name.'</a><br/><span id ="follower">X number of followers</span>';
 ?>
@@ -411,11 +418,24 @@ else{
   }
 }
 $stmt->close();
-$conn->close();
 ?>
 <br/>
 <div id = "comment_field">
-<image src = "images/profile<?php echo $MID;?>.jpg" id = "comment_img">
+<image src = "<?php
+$stmt = $conn->prepare("SELECT profile_pic FROM user WHERE id=?");
+$stmt->bind_param('i', $MID);
+$stmt->execute();
+$stmt->bind_result($pic);
+$stmt->fetch();
+$stmt->close();
+$conn->close();
+if($pic==""){
+  echo "images/img_avatar.png";
+}
+else{
+  echo "uploads/$pic"; 
+}
+?>" id = "comment_img">
 <form action = "" method = "post">
   <input type = "text" name = "com" required>
   <input type = "submit" class = "submit" value = "Comment">

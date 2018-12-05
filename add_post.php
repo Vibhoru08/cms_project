@@ -31,10 +31,10 @@ if (!empty($_POST)){
 
         //$Aid = $_SESSION['AID'];
         $conn= connect();
-        $stmt = $conn->prepare("INSERT INTO post (user_id,title,description,category) VALUES (?, ?,?,?)");
+        $stmt = $conn->prepare("INSERT INTO post (user_id,title,description,category,post_pic) VALUES (?, ?,?,?,?)");
 
         // Bind the variables to the parameter as strings.
-        $stmt->bind_param("isss",$ID,$title,$description,$cat);
+        $stmt->bind_param("issss",$ID,$title,$description,$cat,$filename);
 
         // Execute the statement.
        $stmt->execute();

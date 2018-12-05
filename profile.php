@@ -18,6 +18,7 @@ $dname = $row['display_name'];
 $fname = $row['first_name'];
 $lname = $row['last_name'];
 $about = $row['about'];
+$pic = $row['profile_pic'];
 $stmt1->close();
 $stmt2 = $conn->prepare("SELECT * FROM post WHERE user_id=?");
 $stmt2->bind_param("i", $user_id);
@@ -57,7 +58,12 @@ $nop = $result->num_rows;
   <div class="row mb-2" >
     <div class="col-md-12" >
       <div style="background-color:white;padding:20px 0px 1px 0px;">
-        <img class="rounded-circle mx-auto d-block" src="images/profile<?php echo $user_id;?>.jpg" style="height:200px;">
+        <img class="rounded-circle mx-auto d-block" src="<?php if($pic == ""){
+         echo "images/img_avatar.png";
+       }
+       else{
+         echo "uploads/$pic";
+       };?>" style="height:200px;">
         <p style="text-align:center;font-size:25px;font-family:Verdana;margin-top:14px;color:blue;"><?php echo $dname; ?></p>
       </div>
     </div>

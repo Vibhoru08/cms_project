@@ -89,25 +89,37 @@ else {
      $post_id = $row['id'];
     ?>
   <div id = "content3">
-        <img src = "images/profile<?php echo $row['user_id'];?>.jpg" id = "profile_pic">
-      <span id ="profile_name"><a style= "text-decoration:none;" href = "profile.php?id=<?php echo $row['user_id']; ?>"><?php
-      $user_id = $row['user_id'];
-
-
-      $stmt = $conn->prepare("SELECT display_name FROM user WHERE id=?");
+        <img src = "<?php 
+        $user_id = $row['user_id'];
+        $stmt = $conn->prepare("SELECT * FROM user WHERE id=?");
 
       $stmt->bind_param("i", $user_id);
       $stmt->execute();
-      $stmt->bind_result($name);
-      $stmt->fetch();
-      $stmt->close();
+      $result1 = $stmt->get_result();
+      $row1 = $result1->fetch_assoc();
+      $pic = $row1["profile_pic"];
+      $name = $row1["display_name"];
 
-
-       echo $name;
+        if($pic == ""){
+         echo "images/img_avatar.png";
+       }
+       else{
+         echo "uploads/$pic";
+       }?>" id = "profile_pic">
+      <span id ="profile_name"><a style= "text-decoration:none;" href = "profile.php?id=<?php echo $row['user_id']; ?>"><?php
+      echo $name;
        ?></a><br/><img src= "images/tag.png" id = "tag"><span id = "tags"><?php echo $row['category']; ?></span></span>
     </div>
     <div id = "content4">
-    <img src = "images/signup-image2.jpg" id = "post_pic"/>
+    <img src = '<?php 
+    $ppic = $row['post_pic'];
+    if ($ppic == ""){
+      echo "images/signup-image2.jpg";
+    }
+    else{
+      echo "uploads/small".$ppic;
+    }   
+    ?>' id = "post_pic"/>
     <div id = "post_info"><span id = "post_title">
       <?php
       echo $row['title'];

@@ -22,6 +22,7 @@ $stmt = $conn->prepare("SELECT * FROM user WHERE id=?");
   $fname = $row['first_name'];
   $lname = $row['last_name'];
   $email = $row['email'];
+  $pic= $row['profile_pic'];
     $stmt->close();
 $conn->close();
 ?>
@@ -45,16 +46,11 @@ $conn->close();
   <div class= "container">
   <img src="<?php
   $conn = connect();
-  $stmt = $conn->prepare("SELECT status FROM profile_image WHERE user_id=?");
-  $stmt->bind_param("i", $ID);
-  $stmt->execute();
-  $stmt->bind_result($status);
-  $stmt->fetch();
-  if ($status == '0'){
-    echo "uploads/default.png";
+  if($pic == ""){
+    echo "images/img_avatar.png";
   }
   else{
-    echo "uploads/profile".$ID.".png";
+    echo "uploads/$pic";
   }
   $conn->close();
   ?>" alt="Avatar" class="avatar">
