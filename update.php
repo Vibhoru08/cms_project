@@ -170,7 +170,7 @@ function readURL(input) {
             {
               $('#button').hide();
               $('#blah').hide();
-
+              $('#profile_pic').attr('src', data);
           if(data=='invalid')
           {
            // invalid file format.
