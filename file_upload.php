@@ -10,8 +10,8 @@ $ID = $_SESSION['ID'];
 foreach ($_FILES["images"]["error"] as $key => $error) {
   if ($error == UPLOAD_ERR_OK) {
     $name = $_FILES["images"]["name"][$key];
-    move_uploaded_file( $_FILES["images"]["tmp_name"][$key], "uploads/" . $_FILES['images']['name'][$key]);
-    echo "uploads/profile".$ID.".jpg";
+    move_uploaded_file( $_FILES["images"]["tmp_name"][$key], "uploads/profile".$ID.".jpg");
+    echo "uploads/profile".$ID.".jpg?";
   }
 }
  ?>

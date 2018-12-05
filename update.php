@@ -137,7 +137,7 @@ $('input[type="file"]').change(function(e) {
 else{
 var data = new FormData();
 data.append("file-input",$('input[type="file"]').val());
-
+d = new Date();
 function readURL(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
@@ -170,7 +170,7 @@ function readURL(input) {
             {
               $('#button').hide();
               $('#blah').hide();
-              $('#profile_pic').attr('src', data);
+              $('#profile_pic').attr('src', data+d.getTime());
           if(data=='invalid')
           {
            // invalid file format.
