@@ -98,7 +98,7 @@ echo '<br/>'.$fname.' '.$lname.'<br/><br/>';
   <p id= "main_heading">My Profile</p><hr color="white"/><br/>
 <div class ="first_half">
   <form action = "upload.php" method = "post" enctype="multipart/form-data" class="image-upload">
-  <span id="text_over_profile" style="position:absolute;float:left;left:54 %;font-weight:bold;font-size:18px;top:40%;" >Click to change </span>
+  <span id="text_over_profile" style="position:absolute;float:left;left:820px;font-weight:bold;font-size:18px;top:300px;display:none;" >Click to change </span>
   <label for="file-input">
        <img height="230px" width="230px" id = "profile_pic" src='<?php
        echo "uploads/profile".$ID.".jpg";
