@@ -50,6 +50,7 @@ $conn->close();
 <html>
 <head>
   <link rel = "stylesheet" type = "text/css" href = "css/update.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <title>Update Profile | Alter profile details</title>
 </head>
 <body>
@@ -107,7 +108,7 @@ echo '<br/>'.$fname.' '.$lname.'<br/><br/>';
    </label>
    <input id = "file-input" name = "file_input" type="file" >
    <span id="err" > </span>
-
+   <div class="btn btn-success" id="button" style="display:none;">Upload This Image</div>
 </form>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
@@ -127,20 +128,30 @@ function(){
 
 
 $('input[type="file"]').change(function(e) {
-
-
+  var name = document.getElementById("file-input").files[0].name;
+    var ext = name.split('.').pop().toLowerCase();
+    if(jQuery.inArray(ext, ['gif','png','jpg','jpeg']) == -1)
+    {
+     alert("Invalid Image File");
+    }
+else{
 var data = new FormData();
 data.append("file-input",$('input[type="file"]').val());
 
 function readURL(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
-
+        reader.readAsDataURL(input.files[0]);
         reader.onload = function (e) {
             $("#blah").show();
             $('#blah').attr('src', e.target.result);
+            $('#button').show();
         }
-        reader.readAsDataURL(input.files[0]);
+
+        $('#button').click(function(){
+          ajax_i();
+        });
+ function ajax_i(){
         data.append("images[]", input.files[0]);
         $.ajax({
                url: "file_upload.php",
@@ -151,11 +162,15 @@ function readURL(input) {
          processData:false,
          beforeSend : function()
          {
+
           //$("#preview").fadeOut();
           $("#err").fadeOut();
          },
          success: function(data)
             {
+              $('#button').hide();
+              $('#blah').hide();
+
           if(data=='invalid')
           {
            // invalid file format.
@@ -175,14 +190,16 @@ function readURL(input) {
           });
     }
 }
+}readURL(this);
+}
 
-readURL(this);
+
 
 });
 });
 </script>
 <div id="response"></div>
-  <img id="blah" src="#" style="display:none;" type="hidden"  />
+  <img id="blah" src="#" style="width:300px;height:300px;display:none;" type="hidden"  />
 </div>
 <hr color="white"/>
 <div class = "second_half">
