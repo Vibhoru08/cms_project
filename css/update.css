@@ -28,7 +28,6 @@ body{
 .topnav a:hover {
     background-color: #ddd;
     color: black;
-    height: 26px;
 }
 a.tn-small{
     font-size: 15px;
@@ -74,7 +73,7 @@ a.tn-big{
 
 
 .sidenav {
-  height: 100%; /* Full-height: remove this if you want "auto" height */
+  max-height: 100%; /* Full-height: remove this if you want "auto" height */
   width: 275px; /* Set the width of the sidebar */
   position: fixed; /* Fixed Sidebar (stay in place on scroll) */
   top: 0px; /* Stay at the top */
@@ -100,6 +99,9 @@ a.tn-big{
 background-color: #4CAF50;
 color: #FFFFFF;
 
+}
+a:focus, a:hover{
+  text-decoration:none !important;
 }
 .sidenav a#active {
 background-color: #876034;
